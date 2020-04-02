@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mafcs-d-bancos-zipcode
+  config:
+    name: ${spring.application.name}
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active:
+    - DEV
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761
+server:
+  port: 8094
