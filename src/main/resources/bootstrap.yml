@@ -14,5 +14,18 @@ eureka:
   client:
     service-url:
       default-zone: http://localhost:8761
+
 server:
   port: 8094
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+feign:
+  hystrix:
+    enabled: true

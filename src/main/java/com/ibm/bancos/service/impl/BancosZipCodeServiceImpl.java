@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.bancos.dao.BancosDAO;
 import com.ibm.bancos.model.BancoModel;
+import com.ibm.bancos.model.exceptions.NotFoundException;
 import com.ibm.bancos.service.BancosZipCodeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,12 @@ public class BancosZipCodeServiceImpl implements BancosZipCodeService{
 	@Override
 	public List<BancoModel> findBancos(String zipCode) {
 		log.info("BancosZipCodeService findBancos {}", zipCode);
-		return dao.findByZipCode(zipCode);
+		
+		List<BancoModel> response = dao.findByZipCode(zipCode);
+		if(response.isEmpty())
+			throw new NotFoundException("${exceptions.message.notfound}", "${exceptions.location.service}", "${controller.uri}");
+		log.info("Retrieving {}",response.size());
+		return response;
 	}
 
 }
