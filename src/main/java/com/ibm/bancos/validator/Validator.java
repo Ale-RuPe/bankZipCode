@@ -2,7 +2,6 @@ package com.ibm.bancos.validator;
 
 import java.util.Map;
 import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -54,7 +53,7 @@ public class Validator {
 	}
 	
 	public void validateParam(String zipCode) {
-		boolean notMatch = !Pattern.matches("\\d{5}", zipCode);
+		boolean notMatch = !zipCode.matches("\\d{5}");
 		validate(emptyPredicate.test(zipCode), notMatch);
 	}
 	

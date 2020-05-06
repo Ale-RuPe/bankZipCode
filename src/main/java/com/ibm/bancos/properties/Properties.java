@@ -26,4 +26,11 @@ public class Properties {
 	
 	@Value("${exceptions.message.invalidRequestParam}")
 	private String invalidRequestParam;
+	
+	@Value("${client.zipcode.host}")
+	private String host;
+	
+	@Value("${client.zipcode.uri}")
+	private String clientURI;
+
 }

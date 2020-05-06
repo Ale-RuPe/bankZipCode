@@ -1,3 +1,5 @@
+server:
+  port: 8094
 spring:
   application:
     name: mafcs-d-bancos-zipcode
@@ -10,13 +12,31 @@ spring:
     active:
     - DEV
 
+info:
+  app:
+    name: ${spring.application.name}
+    description: This app retrieves banks by postal code.
+    version: 1.0.0
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+
 eureka:
   client:
     service-url:
       default-zone: http://localhost:8761
-
-server:
-  port: 8094
 
 hystrix:
   command:

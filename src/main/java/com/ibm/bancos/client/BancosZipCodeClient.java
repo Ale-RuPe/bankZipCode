@@ -11,7 +11,7 @@ import com.ibm.bancos.entity.Banco;
 @FeignClient(name = "${client.zipcode.name}",  url = "${client.zipcode.url}", fallback = BancosZipCodeFallback.class)
 public interface BancosZipCodeClient {
 	
-	@GetMapping("${client.zipcode.uri}")
+	@GetMapping("${client.zipcode.uri}"+"${client.zipcode.path-variable}")
 	List<Banco> retrieveZipCodeBanks(@PathVariable String zipcode);
 }
 
